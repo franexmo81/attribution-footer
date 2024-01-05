@@ -5,6 +5,7 @@
 /* ------------------------ */
 
 .attribution {
+  position: relative;
   font-size: 0.75rem;
   text-align: center;
   position: fixed;
@@ -16,7 +17,7 @@
   font-weight: 500;
   letter-spacing: 0;
   color: #000000;
-  transition: transform 0.5s ease-out;
+  transition: transform 0.5s 0.5s ease-out;
 }
 
 .attribution a {
@@ -29,10 +30,10 @@
 }
 
 .attribution .movingFooter {
-  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5);
   padding: 25px 0;
-  transform: translateY(5px);
-  transition: 0.5s ease-out;
+  transform: translateY(7px);
+  transition: transform 0.5s 0.5s ease-out;
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(5px);
   border-top: 5px solid rgb(255, 172, 65);
@@ -44,4 +45,28 @@
 
 .attribution:hover .movingFooter {
   transform: translateY(0);
+}
+
+.attribution::before {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  max-height: 30px;
+  padding: 10px 5px 0;
+  transform: translate(-50%, 10px);
+  content: url("info.svg");
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  transition: background-color 0.5s, color 0.5s, transform 0.5s 0.5s ease-out,
+    max-height 0.5s 0.5s ease-out;
+}
+
+.attribution:hover::before {
+  transform: translate(-50%, 5px);
+  max-height: 0px;
 }
